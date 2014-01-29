@@ -143,6 +143,13 @@ public class Calculator {
 		return newMatrix;
 	}
 	
+	/**
+	 * Helper method
+	 * @param matrix
+	 * @param row the row to remove
+	 * @param col the column to remove
+	 * @return
+	 */
 	private int[][] removeRowAndCol(int[][] matrix, int row, int col){
 		//preconditions
 		if(matrix == null)throw new IllegalArgumentException("matrix must not be null");
