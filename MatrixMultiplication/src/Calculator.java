@@ -8,7 +8,7 @@ public class Calculator {
 	 * @param col 
 	 * @return
 	 */
-	public int[][] minor(int[][] matrix, int row, int col){
+	public static int[][] minor(int[][] matrix, int row, int col){
 		//preconditions
 		if(matrix == null)throw new IllegalArgumentException("matrix must not be null");
 		for(int i = 0; i < matrix.length; i++){
@@ -24,7 +24,7 @@ public class Calculator {
 	 * @param matrix the matrix to get the determinant of
 	 * @return
 	 */
-	public int determinant(int[][] matrix){
+	public static int determinant(int[][] matrix){
 		//preconditions
 		if(matrix == null)throw new IllegalArgumentException("matrix must not be null");
 		for(int i = 0; i < matrix.length; i++){
@@ -51,7 +51,7 @@ public class Calculator {
 	 * @param scalar
 	 * @return
 	 */
-	public void multiply(int[][] matrix, int scalar){
+	public static void multiply(int[][] matrix, int scalar){
 		//preconditions
 		if(matrix == null)throw new IllegalArgumentException("matrix must not be null");
 		for(int i = 0; i < matrix.length; i++){
@@ -71,7 +71,7 @@ public class Calculator {
 	 * @param b
 	 * @return a multiplied by b
 	 */
-	public int[][] multiply(int[][] a, int[][] b){
+	public static int[][] multiply(int[][] a, int[][] b){
 		//preconditions
 		if(a == null)throw new IllegalArgumentException("a must not be null");
 		if(b == null)throw new IllegalArgumentException("b must not be null");
@@ -103,7 +103,7 @@ public class Calculator {
 	 * @param a
 	 * @return
 	 */
-	public int[][] transpose(int[][] matrix){
+	public static int[][] transpose(int[][] matrix){
 		//preconditions
 		if(matrix == null)throw new IllegalArgumentException("matrix must not be null");
 		for(int i = 0; i < matrix.length; i++){
@@ -125,7 +125,7 @@ public class Calculator {
 	 * @param a
 	 * @return
 	 */
-	public int[][] adjoint(int[][] matrix){
+	public static int[][] adjoint(int[][] matrix){
 		//preconditions
 		if(matrix == null)throw new IllegalArgumentException("matrix must not be null");
 		for(int i = 0; i < matrix.length; i++){
@@ -150,7 +150,7 @@ public class Calculator {
 	 * @param col the column to remove
 	 * @return
 	 */
-	private int[][] removeRowAndCol(int[][] matrix, int row, int col){
+	private static int[][] removeRowAndCol(int[][] matrix, int row, int col){
 		//preconditions
 		if(matrix == null)throw new IllegalArgumentException("matrix must not be null");
 		for(int i = 0; i < matrix.length; i++){
