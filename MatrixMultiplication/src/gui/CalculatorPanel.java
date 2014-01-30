@@ -26,6 +26,8 @@ public class CalculatorPanel extends JPanel{
 	@SuppressWarnings("unused")
 	public CalculatorPanel(){
 
+		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		
 		//set up i/o panels
 		io:{
 			JPanel ioContainer = new JPanel();
@@ -54,6 +56,8 @@ public class CalculatorPanel extends JPanel{
 			}
 	
 			ioContainer.add(Box.createVerticalGlue());
+			
+			add(ioContainer);
 		}
 		
 		controls:{
@@ -61,7 +65,7 @@ public class CalculatorPanel extends JPanel{
 			controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
 	
 			unary:{
-				JLabel label = new JLabel("<h1>Unary Operations</h1>");
+				JLabel label = new JLabel("Unary Operations");
 				controlPanel.add(label);
 				controlPanel.add(Box.createVerticalGlue());
 	
@@ -83,6 +87,7 @@ public class CalculatorPanel extends JPanel{
 						out.setBody(matrixToString(Calculator.transpose(stringToMatrix(a.getBody()))));
 					}
 				});
+				controlPanel.add(temp);
 				
 				temp = new JButton("Inverse");
 				temp.addActionListener(new ActionListener(){
@@ -94,6 +99,7 @@ public class CalculatorPanel extends JPanel{
 						out.setBody(matrixToString(Calculator.transpose(Calculator.adjoint(matrix))));
 					}
 				});
+				controlPanel.add(temp);
 				
 				temp = new JButton("Adjoint");
 				temp.addActionListener(new ActionListener(){
@@ -103,10 +109,11 @@ public class CalculatorPanel extends JPanel{
 						out.setBody(matrixToString(Calculator.adjoint(stringToMatrix(a.getBody()))));
 					}
 				});
+				controlPanel.add(temp);
 				
 				scale:{
 					JPanel tempPanel = new JPanel();
-					tempPanel.setLayout(new BoxLayout(temp, BoxLayout.X_AXIS));
+					tempPanel.setLayout(new BoxLayout(tempPanel, BoxLayout.X_AXIS));
 					
 					temp = new JButton("Scale");
 					temp.addActionListener(new ActionListener(){
@@ -129,12 +136,15 @@ public class CalculatorPanel extends JPanel{
 					
 					tempPanel.add(Box.createHorizontalStrut(30));
 					tempPanel.add(new JLabel("Scale:"));
+					tempPanel.add(Box.createHorizontalStrut(10));
 					tempPanel.add(scaleField);
+					
+					controlPanel.add(tempPanel);
 				}
 				
 				minor:{
 					JPanel tempPanel = new JPanel();
-					tempPanel.setLayout(new BoxLayout(temp, BoxLayout.X_AXIS));
+					tempPanel.setLayout(new BoxLayout(tempPanel, BoxLayout.X_AXIS));
 					
 					temp = new JButton("Minor");
 					temp.addActionListener(new ActionListener(){
@@ -174,17 +184,21 @@ public class CalculatorPanel extends JPanel{
 					
 					tempPanel.add(Box.createHorizontalStrut(30));
 					tempPanel.add(new JLabel("i:"));
+					tempPanel.add(Box.createHorizontalStrut(10));
 					tempPanel.add(iField);
 					tempPanel.add(Box.createHorizontalStrut(30));
 					tempPanel.add(new JLabel("j:"));
+					tempPanel.add(Box.createHorizontalStrut(10));
 					tempPanel.add(jField);
+					
+					controlPanel.add(tempPanel);
 				}
 			}
 	
 			binary:{
 				controlPanel.add(Box.createVerticalGlue());
 				controlPanel.add(new JSeparator());
-				JLabel label = new JLabel("<h1>Binary Operations</h1>");
+				JLabel label = new JLabel("Binary Operations");
 				controlPanel.add(label);
 				controlPanel.add(Box.createVerticalGlue());
 	
@@ -197,9 +211,12 @@ public class CalculatorPanel extends JPanel{
 						out.setBody(matrixToString(Calculator.multiply(stringToMatrix(a.getBody()), stringToMatrix(b.getBody()))));
 					}
 				});
+				controlPanel.add(temp);
 			}
 	
 			controlPanel.add(Box.createVerticalGlue());
+			
+			add(controlPanel);
 		}
 	}
 
