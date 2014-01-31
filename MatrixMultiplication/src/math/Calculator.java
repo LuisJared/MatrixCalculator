@@ -144,6 +144,28 @@ public class Calculator {
 		return newMatrix;
 	}
 	
+	public static int[][] invertBody(int[][] matrix){
+		
+		//preconditions
+		if(matrix == null)throw new IllegalArgumentException("matrix must not be null");
+		for(int i = 0; i < matrix.length; i++){
+			if(matrix.length != matrix[i].length)throw new IllegalArgumentException("matrix must be square!");
+		}
+		
+		int[][] newMatrix = new int[matrix.length][matrix.length];
+		
+		if(matrix.length == 2){
+			newMatrix[0][0]  = matrix[1][1];
+			newMatrix[1][1] = matrix[0][0];
+			newMatrix[1][0] = -1 * matrix[1][0];
+			newMatrix[0][1] = -1 * matrix[0][1];
+			
+			return newMatrix;
+		}
+		
+		return transpose(adjoint(matrix));
+	}
+	
 	/**
 	 * Helper method
 	 * @param matrix
